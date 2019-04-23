@@ -16,6 +16,12 @@ h5{
     text-align: right;
 }
 
+.form-check-input {   
+    margin-top: .2rem !important;
+}
+
+
+
 label{
     display: inline-block;
     font-size: 12px;
