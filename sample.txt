@@ -1,0 +1,53 @@
+function Render_AllNotificationsArea() {
+
+    var html;
+    var crossdirectionstyle;
+    var crossiconstylehtml;
+    var notificaitoncountposition;
+    var fontsize;
+    var allnotificaitoncounttagfontsize;
+
+    if (browermode == "PC") {
+        $("#allnotificationsdiv").removeClass("allnotificationsarea_mobile").addClass("allnotificationsarea")
+        if (languagedirection == "1") {
+            $("#allnotificationsdiv").css("left", "0px")
+        }
+        else {
+            $("#allnotificationsdiv").css("right", "0px")
+        }
+        fontsize = "font-size:12px;"
+    }
+    else {
+        $("#allnotificationsdiv").removeClass("allnotificationsarea").addClass("allnotificationsarea_mobile")
+        fontsize = "font-size:14px;"
+    }
+
+    if (languagedirection == "1") {
+        crossdirectionstyle = "style=\"left: calc(100% - 50px);\"";
+        crossiconstylehtml = "style=\"top:5px;\"";
+        notificaitoncountposition = "text-align:left; left:10px;"
+    }
+    else {
+        crossdirectionstyle = "style=\"left:10px;\"";
+        crossiconstylehtml = "style=\"top:5px;\"";
+        notificaitoncountposition = "text-align:right; left:calc(50% - 10px);"
+    }
+
+
+    html = "<div style=\"position:relative; width:100%; height:60px; top:0px;\">"
+
+    // window cross icon
+    html += "<div class=\"cross\" id=\"allnotificationsareaclosebutton\" " + crossdirectionstyle + " onclick=\"Process_AnimateClickTransparent('allnotificationsareaclosebutton',Process_HideAllNotificationsArea);\"><img src=\"images/897879909805698675986754980.png\" class=\"corssicon\" " + crossiconstylehtml + "/></div>";
+
+    // notifications count container
+    html += "<div id=\"allnotificationscountcontainer\" style=\"position:relative; width:50%; height:40px; line-height:40px; top:-20px; " + notificaitoncountposition + " font-family:Verdana, Geneva, Tahoma, sans-serif; font-size:32px;\"></div>"
+
+    // clear all button
+    html += "<div id=\"allnotificationclearallbuttondiv\" class=\"allnotificationsclearallbutton\" style=\"" + fontsize + "\" onclick=\"Process_AnimateClickTransparent('allnotificationclearallbuttondiv',Process_RemoveAllNotifications);\">" + Process_WordParser("#%$87$") + "</div>"
+
+    html += "</div>"
+
+    // notificaiton tile container
+    html += "<div id=\"allnotificationscontainer\" style=\"position:relative; width:100%; height:calc(100% - 60px); top:0px; overflow-y:auto;\"></div>"
+    $("#allnotificationsdiv").html(html);
+}

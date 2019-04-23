@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styleform.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+</head>
+<body>
+<div  id="createchatroom" class="container">
+</div>
+
+<script>
+var html;
+var languagedirection="1";
+var usertype="C";
+if(languagedirection=="1"){
+    html='<h2>Small Modal</h2>';
+    html+='<button type="button" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">Create Chat Room</button>';
+    html+='<div class="modal fade" id="myModal" role="dialog">';
+    html+='    <div class="modal-dialog modal-xs modal-lg">';
+    html+='        <div class="modal-content">';
+    html+='            <div class="modal-header">';
+    html+='              <h4 class="modal-title">Create Chat Room</h4>';
+    html+='                  <button type="button" class="close" data-dismiss="modal">&times;</button> ';       
+    html+='            </div>';
+    html+='            <div class="modal-body">';
+    html+='                <form >';
+    html+='                    <div class="row">';
+    html+='                        <div class="col-lg-12">';
+    html+='                            <div class="form-group">';
+    html+='                                <input type="text" class="form-control" placeholder="Chat Room Name" id="chatroomname" name="chatroomname">';
+    html+='                            </div>';
+    html+='                        </div>';
+    html+='                        <div class="col-lg-12">';
+    html+='                            <div class="form-group">';
+    html+='                                <input type="text" class="form-control margtop"  placeholder="Topic" id="chatroomtopic" name="chatroomtopic">';
+    html+='                            </div>';
+    html+='                        </div>';
+    
+    html+='                    </div>';
+    html+='                     <div class="row">';
+    html+='                        <div class="col-lg-6 ">';
+    html+='                              <label id="myFileclick" class="btn btn-primary">Upload Image</label>   ';    
+    html+='                            <input type="file" id="myFile" name="filename2" style="display:none;" accept="image/*" onchange="loadFile(event)">';
+    html+='                         </div>';
+    html+='                        <div class="col-lg-6">';
+    html+='                             <img id="output" class="img-thumbnail float-left" width="70px" height="70px"/>';
+    html+='                        </div>';                     
+    html+='                     </div>';
+    html+='                    <hr>';
+    html+='                    <div class="row ">';
+    html+='                       <div class="col-lg-12 ">';
+    html+='                            <div class=" padtop">';
+    html+='                                <div class="row">';
+    html+='                                    <div class="col-lg col-md-4">';
+    html+='                                        <h6>Chat Room Type</h6>';
+    html+='                                           <hr>';
+    html+='                                                <input type="radio" name="chatroom" value="Public">&nbsp;<label>Public</label><br>';
+    html+='                                                <input type="radio" name="chatroom" value="Private">&nbsp;<label>Private</label><br>';
+    html+='                                                <div id="hideservice">'
+    html+='                                                     <input type="radio" name="chatroom" value="Service">&nbsp;<label>Service</label><br>';  
+    html+='                                                </div>';
+    html+='                                    </div>';
+    html+='                                    <div class="col-lg col-md-4">';
+    html+='                                            <h6 class="checkboxpadding">Gender</h6>';
+    html+='                                            <hr>';
+    html+='                                            <ul>';
+    html+='                                               <li>';
+    html+='                                                <label class="form-check-label">';
+    html+='                                                  <input class="form-check-input" type="checkbox" id="Male" value="Male">Male';
+    html+='                                                </label></li>';
+    html+='                                                <li>';
+    html+='                                                <label class="form-check-label">';
+    html+='                                                  <input class="form-check-input" type="checkbox" id="Female" value="Female">Female';
+    html+='                                                </label></li>';
+    html+='                                                <li>';
+    html+='                                                <label class="form-check-label">';
+    html+='                                                  <input class="form-check-input" type="checkbox" id="Transgender" value="Transgender">Transgender';
+    html+='                                                </label></li>';
+    html+='                                                <li>';
+    html+='                                                <label class="form-check-label">';
+    html+='                                                  <input class="form-check-input" type="checkbox" id="Everybody" value="Everybody">Everbody';
+    html+='                                                </label></li>';
+    html+='                                            </ul>';
+    html+='                                    </div>';
+    html+='                                    <div class="col-lg col-md-4">';
+    html+='                                        <h6 class="checkboxpadding">Age</h6>';
+    html+='                                           <hr> ';       
+    html+='                                                <input type="radio" name="age" value="1-15">&nbsp;<label>1-15</label><br>';
+    html+='                                                <input type="radio" name="age" value="16-20">&nbsp;<label>16-20</label><br>';
+    html+='                                                <input type="radio" name="age" value="Above20">&nbsp;<label>Above 20</label><br>';  
+    html+='                                    </div>';
+    html+='                            </div>'; 
+    html+='                        </div>';              
+    html+='                    </div>';
+    html+='                    </div>';
+    html+='                    <hr>';           
+    html+='                    <div class="row">';
+    html+='                        <div class="mt-1  col-lg-12">';
+    html+='                            <a data-toggle="collapse" data-target="#collapseExampleArea" href="#collapseExampleArea" aria-expanded="false">';
+    html+='                              Show Advance Option<span class="expand_caret glyphicon glyphicon-caret"></span></a>';
+    html+='                                <div id="collapseExampleArea" class="collapse">';
+    html+='                                  <hr>';
+    html+='                                   <div class="col-lg-12">';
+    html+='                                        <div class="mt-4">';
+    html+='                                            <h5>Subscription</h5>';
+    html+='                                            <div class="row">';
+    html+='                                                <div class="col-lg-6">';
+    html+='                                                    <input type="radio" name="Subscription" value="Paid" id="enableclick"><label>&nbsp;Paid</label><br>';
+    html+='                                                </div>';
+    html+='                                                <div class="col-lg-6">';
+    html+='                                                  <input type="radio" name="Subscription" value="Free" id="disableclick"><label>&nbsp;Free</label><br>'; 
+    html+='                                               </div>';
+    html+='                                            </div>';
+    html+='                                         <div class="row">';
+    html+='                                                <div class="col-lg-8 mt-3">';
+    html+='                                                <label for="number">Weekly Subscription</label>';
+    html+='                                                    <div class="input-group mb-3 mt-2">';
+    html+='                                                        <div class="input-group-prepend">';
+    html+='                                                          <span class="input-group-text">$</span>';
+    html+='                                                        </div>';
+    html+='                                                        <input type="number" class="form-control" id="Weeklysubscription" name="Weeklysubscription" min="0" >';
+    html+='                                                    </div>';
+    html+='                                                </div>';
+    html+='                                                <div class="col-lg-8">';
+    html+='                                                    <label for="number">Monthly Subscription</label>';
+    html+='                                                    <div class="input-group mb-3 mt-2">';
+    html+='                                                        <div class="input-group-prepend">';
+    html+='                                                          <span class="input-group-text">$</span>';
+    html+='                                                        </div>';
+    html+='                                                        <input type="number" class="form-control" id="Monthlysubscription" name="Monthlysubscription" min="0" >';
+    html+='                                                    </div>';
+    html+='                                                </div>';
+    html+='                                            </div>';
+    html+='                                        </div>';
+    html+='                                    </div>';
+    html+='                                    <hr>';
+    html+='                                    <div class="ml-3">';                        
+    html+='                                        <h5 class="mt-3">Advertisement Package</h5>';
+    html+='                                            <div class="row">';
+    html+='                                                <div class="col-lg-8 mt-3">';
+    html+='                                                    <label for="number">Weekly Subscription</label>';
+    html+='                                                        <div class="input-group mb-3 mt-2">';
+    html+='                                                            <div class="input-group-prepend">';
+    html+='                                                              <span class="input-group-text">$</span>';
+    html+='                                                            </div>';
+    html+='                                                            <input type="number" class="form-control" id="Weeklyadvertisement" name="Weeklyadvertisement" min="0">';
+    html+='                                                        </div>';
+    html+='                                                    <label for="number">Monthly Subscription</label>';
+    html+='                                                        <div class="input-group mb-3 mt-2">';
+    html+='                                                            <div class="input-group-prepend">';
+    html+='                                                              <span class="input-group-text">$</span>';
+    html+='                                                            </div>';
+    html+='                                                            <input type="number" class="form-control" id="Monthlyadvertisement" name="Monthlyadvertisement" min="0">';
+    html+='                                                        </div>';
+    
+    html+='                                                </div>'; 
+    html+='                                            </div>';
+    html+='                                            <hr>';
+    html+='                                        <div class="row">';
+    html+='                                            <div class="col-lg-12 col-md-12">';
+    html+='                                                <div class="row">';
+    html+='                                                    <div class="col-lg-4 col-sm-4 smwidth ">';
+    html+='                                                        <h5 class="pt-2">Broadcast</h5>&nbsp;&nbsp;';
+    html+='                                                    </div>';
+    html+='                                                    <div class="col-lg col-sm-6 smwidth">';
+    html+='                                                        <input id="toggle-trigger" type="checkbox" value="Broadcast" checked data-toggle="toggle" ><br>';
+    html+='                                                    </div>';
+    html+='                                                </div>';
+    html+='                                                <div class="row">';
+    html+='                                                    <div class="col-lg-4 col-sm-4 smwidth">';
+    html+='                                                        <h5 class="pt-2">Profile name</h5>&nbsp;&nbsp;';
+    html+='                                                    </div>';
+    html+='                                                    <div class="col-lg col-sm-6 smwidth">';
+    html+='                                                        <input id="toggle-trigger1" type="checkbox" value="Profilename" checked data-toggle="toggle">';  
+    html+='                                                    </div> ';          
+    html+='                                                </div>';                                                   
+    html+='                                            </div>';    
+    html+='                                        </div>';
+    html+='                                        <hr>';
+    html+='                                    </div>';
+    html+='                                </div>';
+    html+='                        </div>';                    
+    html+='                    </div>';      
+    html+='                    <div class="row">';
+    html+='                        <div class=" mt-4 ml-3 mb-3 col-lg-12">';
+    html+='                          <button type="submit" class="btn btn-primary" onclick="chatsubmit();">Submit</button>';
+    html+='                        </div>';    
+    html+='                    </div>';
+    html+='                </form>';
+    html+='            </div>';        
+    html+='    </div>';
+    html+='    </div>';
+    html+='</div>';
+}
+else{
+    html='<h2>Small Modal</h2>';
+    html+='<button type="button" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">Create Chat Room</button>';
+    html+='<div class="modal fade" id="myModal" role="dialog">';
+    html+='    <div class="modal-dialog modal-xs modal-lg">';
+    html+='        <div class="modal-content">';
+    html+='            <div class="modal-header">';
+    html+='                  <button type="button" class="close" data-dismiss="modal">&times;</button> ';
+    html+='              <h4 class="modal-title">Create Chat Room</h4>';       
+    html+='            </div>';
+    html+='            <div class="modal-body">';
+    html+='                <form >';
+    html+='                    <div class="row">';
+    html+='                        <div class="col-lg-12">';
+    html+='                            <div class="form-group">';
+    html+='                                <input type="text" class="form-control textright" placeholder="Chat Room Name" id="chatroomname" name="chatroomname" >';
+    html+='                            </div>';
+    html+='                        </div>';
+    html+='                        <div class="col-lg-12">';
+    html+='                            <div class="form-group">';
+    html+='                                <input type="text" class="form-control margtop textright"  placeholder="Topic" id="chatroomtopic" name="chatroomtopic">';
+    html+='                            </div>';
+    html+='                        </div>';
+    html+='                     </div>';
+    html+='                     <div class="row">';
+    html+='                        <div class="col-lg-6 order-last">';
+    html+='                              <label id="myFileclick" class="btn btn-primary">Upload Image</label>   ';    
+    html+='                                 <input type="file" id="myFile" name="filename2" style="display:none;" accept="image/*" onchange="loadFile(event)">';
+    html+='                         </div>';
+    html+='                        <div class="col-lg-6">';
+    html+='                             <img id="output" class="img-thumbnail float-right" width="70px" height="70px"/>';
+    html+='                        </div>';                     
+    html+='                     </div>';
+    html+='                    <hr>';
+    html+='                    <div class="row ">';
+    html+='                       <div class="col-lg-12 ">';
+    html+='                            <div class=" padtop">';
+    html+='                                <div class="row">';
+    html+='                                    <div class="col-lg col-md-4 order-last">';
+    html+='                                        <h6 class="text-right checkboxpadding">Chat Room Type</h6>';
+    html+='                                           <hr>';
+    html+='                                                <div class="ml-3 text-right">';
+    html+='                                                    <label class="radio-inline">Public</label> &nbsp;<input type="radio" name="chatroom" value="Public"><br>';
+    html+='                                                    <label>Private</label>&nbsp;<input type="radio" name="chatroom" value="Private"><br>';
+    html+='                                                     <div id="hideservice">'
+    html+='                                                    <label>Service</label>&nbsp;<input type="radio" name="chatroom" value="Service"><br>';
+    html+='                                                     </div>';
+    html+='                                                 </div>'; 
+    html+='                                    </div>';
+    html+='                                    <div class="col-lg col-md-4">';
+    html+='                                        <h6 class="text-right pr-1 checkboxpadding">Gender</h6>';
+    html+='                                         <hr>';
+    html+='                                         <ul class="text-right checkboxpadding">';
+    html+='                                             <li>';
+    html+='                                                 <label class="form-check-label pr-4">Male</label>';
+    html+='                                                 <input class="form-check-input" type="checkbox" id="Male" value="Male">';
+    html+='                                              </li>';
+                                            
+
+    html+='                                              <li>';
+    html+='                                                  <label class="form-check-label pr-4">Female</label>';
+    html+='                                                  <input class="form-check-input" type="checkbox" id="Female" value="Female">';
+    html+='                                              </li>';
+                                            
+
+    html+='                                              <li>';
+    html+='                                                   <label class="form-check-label pr-4">Transgender</label>';
+    html+='                                                   <input class="form-check-input" type="checkbox" id="Transgender" value="Transgender">';
+    html+='                                              </li>';
+    html+='                                              <li>';
+    html+='                                                   <label class="form-check-label pr-4">Everbody</label>';
+    html+='                                                   <input class="form-check-input" type="checkbox" id="Everybody" value="Everybody">';
+    html+='                                               </li>';
+    html+='                                          </ul>';
+    html+='                                    </div>';
+    html+='                                    <div class="col-lg col-md-4 order-first">';
+    html+='                                        <h6 class="text-right ">Age</h6>';
+    html+='                                           <hr>';
+    html+='                                                <div class="ml-3 text-right">';
+    html+='                                                    <label>1-15</label> &nbsp;<input type="radio" name="Age" value="1-15"><br>';
+    html+='                                                    <label>16-20</label>&nbsp;<input type="radio" name="Age" value="16-20"><br>';
+    html+='                                                    <label>Above 20</label>&nbsp;<input type="radio" name="Age" value="Above 20"><br>';
+    html+='                                                </div>'; 
+    html+='                                    </div>';
+    html+='                            </div>'; 
+    html+='                        </div>';              
+    html+='                    </div>';
+    html+='                    </div>';
+    html+='                    <hr>';           
+    html+='                    <div class="row">';
+    html+='                        <div class="mt-1 col-lg-12 pr-0">';
+    html+='                        <div class="text-right">';
+    html+='                            <a data-toggle="collapse" data-target="#collapseExampleArea" href="#collapseExampleArea" aria-expanded="false">';
+    html+='                              Show Advance Option<span class="expand_caret glyphicon glyphicon-caret"></span></a>';
+    html+='                                <div id="collapseExampleArea" class="collapse float-right">';
+    html+='                                  <hr>';
+    html+='                                   <div class="col-lg-12">';
+    html+='                                        <div class="mt-4">';
+    html+='                                            <h5 class="text-right">Subscription</h5>';
+    html+='                                            <div class="row">';
+    html+='                                                <div class="col-lg-6 text-right">';
+    html+='                                                    <input type="radio" name="subs" value="Paid" id="enableclick"><label>&nbsp;Paid</label><br>';
+    html+='                                                </div>';
+    html+='                                                <div class="col-lg-6 text-right">';
+    html+='                                                  <input type="radio" name="subs" value="Free" id="disableclick"><label>&nbsp;Free</label><br>'; 
+    html+='                                               </div>';
+    html+='                                            </div>';
+    html+='                                         <div class="row">';
+    html+='                                               <div class="col-lg-8 offset-lg-4">';
+    html+='                                                <label for="number" class="mt-3 float-right">Weekly Subscription</label>';
+    html+='                                                    <div class="input-group mb-3">';
+    html+='                                                        <input type="number" class="form-control textright" id="Weeklysubscription" name="Weeklysubscription" min="0" >';
+    html+='                                                        <div class="input-group-prepend">';
+    html+='                                                          <span class="input-group-text">$</span>';
+    html+='                                                        </div>';
+    
+    html+='                                                    </div>';
+    html+='                                                </div>';
+    html+='                                                <div class="col-lg-8 offset-lg-4">';
+    html+='                                                    <label for="number" class="float-right">Monthly Subscription</label>';
+    html+='                                                    <div class="input-group mb-3 ">';
+    html+='                                                        <input type="number" class="form-control textright" id="Monthlysubscription" name="Monthlysubscription" min="0" >';
+    html+='                                                        <div class="input-group-prepend">';
+    html+='                                                          <span class="input-group-text">$</span>';
+    html+='                                                        </div>';  
+    html+='                                                    </div>';
+    html+='                                                </div>';
+    html+='                                         </div>';
+    html+='                                        </div>';
+    html+='                                    </div>';
+    html+='                                    <hr>';
+    html+='                                    <div class="mr-3">';                        
+    html+='                                        <h5 class="mt-3 text-right">Advertisement Package</h5>';
+    html+='                                            <div class="row">';
+    html+='                                                <div class="col-lg-8 text-right offset-lg-4">';
+        html+='                                                <label for="number">Weekly Subscription</label>';
+    html+='                                                        <div class="input-group mb-3">';
+    html+='                                                            <input type="number" class="form-control textright" id="Weeklyadvertisement" name="Weeklyadvertisement" min="0">';
+    html+='                                                            <div class="input-group-prepend">';
+    html+='                                                              <span class="input-group-text">$</span>';
+    html+='                                                            </div>';
+    
+    html+='                                                        </div>';
+    html+='                                                    <label for="number">Monthly Subscription</label>';
+    html+='                                                        <div class="input-group mb-3">';
+    html+='                                                            <input type="number" class="form-control textright" id="Monthlyadvertisement" name="Monthlyadvertisement" min="0">';
+    html+='                                                            <div class="input-group-prepend">';
+    html+='                                                              <span class="input-group-text">$</span>';
+    html+='                                                            </div>';
+  
+    html+='                                                        </div>';
+
+    html+='                                                </div>'; 
+    html+='                                            </div>';
+    html+='                                            <hr>';
+    html+='                                        <div class="row">';
+    html+='                                            <div class="col-lg-12 col-md-12">';
+    html+='                                                <div class="row">';
+    html+='                                                    <div class="col-lg-4 col-sm-4 order-last text-right smwidth ">';
+    html+='                                                        <h5 class="pt-2">Broadcast</h5>';
+    html+='                                                    </div>';
+    html+='                                                    <div class="col-lg col-sm-6 text-right smwidth">';
+    html+='                                                        <input id="toggle-trigger" type="checkbox" value="Broadcast" checked data-toggle="toggle"><br>';
+    html+='                                                    </div>';
+    html+='                                                </div><br>';
+    html+='                                                <div class="row">';
+    html+='                                                    <div class="col-lg-4 col-sm-4 order-last text-right smwidth">';
+    html+='                                                        <h5 class="pt-2">Profile name</h5>';
+    html+='                                                    </div>';
+    html+='                                                    <div class="col-lg col-sm-6 text-right smwidth">';
+    html+='                                                        <input id="toggle-trigger1" type="checkbox" value="Profilename" checked data-toggle="toggle">';  
+    html+='                                                    </div> ';          
+    html+='                                                </div>';                                                   
+    html+='                                            </div>';    
+    html+='                                        </div>';
+    html+='                                        <hr>';
+    html+='                                    </div>';
+    html+='                                </div>';
+    html+='                        </div>';                    
+    html+='                    </div>';
+    html+='                    </div>';      
+    html+='                    <div class="row">';
+    html+='                        <div class=" mt-3 mr-3 mb-3 text-right col-lg-12">';
+    html+='                          <button type="submit" class="btn btn-primary" onclick="chatsubmit();">Submit</button>';
+    html+='                        </div>';    
+    html+='                    </div>';
+    html+='                </form>';
+    html+='            </div>';        
+    html+='    </div>';
+    html+='    </div>';
+    html+='</div>';
+
+}
+$('#createchatroom').append(html); 
+$(document).ready(function(){
+  
+    $('#myFileclick').click(function(){
+    $("#myFile").click();
+    });
+    
+    if(usertype!="C"){
+    $("#hideservice").css("display","none"); 
+    }
+    
+    
+    $("#Weeklysubscription").prop("disabled", true);
+    $("#Monthlysubscription").prop("disabled", true);
+    
+    $("#enableclick").click(function(){
+        $("#Weeklysubscription").prop("disabled", false); 
+        $("#Monthlysubscription").prop("disabled", false); 
+    
+    });
+    
+    $("#disableclick").click(function(){
+       $("#Weeklysubscription").prop("disabled", true);
+        $("#Monthlysubscription").prop("disabled", true);
+    
+    });
+       
+});
+
+/*
+    $(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});*/
+    
+function toggleOn() {
+    $('#toggle-trigger').bootstrapToggle('on')
+  }
+  function toggleOff() {
+    $('#toggle-trigger').bootstrapToggle('off')  
+  }
+    function toggleOn() {
+    $('#toggle-trigger1').bootstrapToggle('on')
+  }
+  function toggleOff() {
+    $('#toggle-trigger1').bootstrapToggle('off')  
+  }
+    
+  //if you want get value
+ // function getValue()
+ // {
+ //  var value=$('#toggle-trigger').bootstrapToggle().prop('checked');
+ //  console.log(value);
+ // }    
+ var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  }; 
+
+
+function chatsubmit(){
+    
+var pass_string;  
+//pass_string+= "CP"+$("input[name=chatroom]:checked").val()+";";
+var ChannelType="";
+
+if($("input[name=chatroom]:checked").val()=="Public"){
+    ChannelType="P";
+}
+else if($("input[name=chatroom]:checked").val()=="Private"){
+    ChannelType="R";
+}
+else if($("input[name=chatroom]:checked").val()=="Service"){
+    ChannelType="S";
+}
+
+var ChannelAllowedGenders="";
+    
+if($("#Male:checked").val()=="Male"){
+    ChannelAllowedGenders+="M";
+}
+if($("#Female:checked").val()=="Female"){
+    ChannelAllowedGenders+="F";
+}
+if($("#Transgender:checked").val()=="Transgender"){
+    ChannelAllowedGenders+="T";
+} 
+if($("#Everybody:checked").val()=="Everybody"){
+    ChannelAllowedGenders+="X";
+}    
+    
+var Age="";
+
+if($("input[name=age]:checked").val()=="1-15"){
+    Age+="1-15";
+}
+else if($("input[name=age]:checked").val()=="16-20"){
+    Age+="16-20";
+}
+else if($("input[name=age]:checked").val()=="Above20"){
+    Age+="Above20";
+}
+    
+var ChannelPaidFlag ="";     
+if($("input[name=Subscription]:checked").val()=="Paid"){
+    ChannelPaidFlag+="P";
+}
+else if($("input[name=Subscription]:checked").val()=="Free"){
+    ChannelPaidFlag+="F";
+}    
+
+var ChannelBroadcastBanFlag="";
+
+if($("#toggle-trigger:checked").val()=="Broadcast"){
+    ChannelBroadcastBanFlag+="T";
+} 
+else{
+    ChannelBroadcastBanFlag+="F";
+}
+    
+var ForceProfileFlag="";
+    
+if($("#toggle-trigger1:checked").val()=="Profilename"){
+    ForceProfileFlag+="T";
+} 
+else{
+    ForceProfileFlag+="F";
+}
+
+    
+pass_string = "CN"+$("#chatroomname").val() + ";"+"\n";
+pass_string+= "CT"+$("#chatroomtopic").val() + ";"+"\n";
+pass_string+= "CI"+$("#myFile").val().replace(/C:\\fakepath\\/i, '') + ";"+"\n";      
+pass_string+= "CP"+ChannelType+";"+"\n";
+pass_string+= "CG"+ChannelAllowedGenders+";"+"\n"; 
+pass_string+= "CA"+Age+";"+"\n";
+pass_string+= "CF"+ChannelPaidFlag+";"+"\n";
+pass_string+= "CC"+$("#Weeklysubscription").val() +"10080"+";"+"\n"; 
+pass_string+= "CC"+$("#Monthlysubscription").val() +"43800"+ ";"+"\n"; 
+
+pass_string+= "CA"+$("#Weeklyadvertisement").val() +"10080"+";"+"\n"; 
+pass_string+= "CA"+$("#Monthlyadvertisement").val() +"43800"+";"+"\n"; 
+
+pass_string+= "CB"+ChannelBroadcastBanFlag+";"+"\n";
+pass_string+= "FP"+ForceProfileFlag+";"+"\n";
+
+alert(pass_string);
+/*
+var genders="";
+if ($("#checkboxmale").value()==true){
+genders+="M";
+}
+
+if ($("#checkboxfemale").value()==true){
+genders+="F";
+}
+pass_string+= "CG"+genders+";"
+
+
+
+*/
+}
+
+</script>
+
+
+</body>
+</html>
+
+

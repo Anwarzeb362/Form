@@ -1,0 +1,160 @@
+body{
+    color:black;
+    
+}
+h6{
+    font-size: 14px
+}
+h5{
+    font-size:14px;
+}
+.modal-header .close {
+    margin:-1rem -1rem auto;
+}
+
+.textright{
+    text-align: right;
+}
+
+label{
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    padding: 0px;
+}
+.modal-lg {
+    max-width: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+.modal-content{
+    font-size: 14px;
+    padding: 10px;
+}
+.modal-title{
+    font-size: 25px;
+}
+.img-thumbnail{
+    border: none;
+}
+
+ul ,li{
+    list-style: none;
+    padding-left: 10px;
+
+}
+
+input[type="text"], textarea {
+outline: none;
+box-shadow:none !important;
+border:1px solid #ccc !important;
+    font-size: 14px;
+}
+input[type="number"], textarea {
+outline:none;
+box-shadow:none !important;
+border:1px solid #ccc !important;
+    font-size: 14px;
+}
+.btn-default{
+  color:white;
+}
+.btn{
+    background-color: #220a37;
+    border-color: none;
+    border: 0px; 
+    border-radius: 0px;
+}
+.btn:focus{
+    border-color: none;
+}
+.btn:hover{
+    background-color: blueviolet;
+}
+.btn:visited{
+    border-color: none;
+}
+
+/*Modal overflow*/
+.modal {
+    overflow-y: auto;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    
+.modal-xs {
+    padding-top: 10px;
+    padding-bottom:10px;
+    min-width: 60% !important;
+    margin: auto !important;
+}
+    .modal-title{
+        font-size: 20px;
+    }
+    h5{
+        font-size: 12px;
+    }
+    h6{
+        font-size: 12px;
+    }
+    label{
+        font-size: 12px;
+    }
+    .btn,button{
+        font-size: 12px;
+        background-color: #220a37;
+    }
+  .modal-xs{
+    min-width: 85%;
+    margin-left: 8%;
+}
+    .margtop{
+        margin-top: 15px;
+    }
+    .padtop{
+        padding-top: 0px!important;
+       
+    }  
+    
+}
+
+@media screen and (max-width: 425px) {
+    .modal-xs {
+    padding-top: 10px;
+    padding-bottom:10px;
+    min-width: 70% !important;
+    margin: auto !important;
+}
+    .smwidth{
+        width:50%;
+    }
+    
+    .checkboxpadding{
+        margin-top: 20px;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .modal-xs {
+    padding-top: 10px;
+    padding-bottom:10px;
+    min-width: 90% !important;
+    margin: auto !important;
+}
+    .smwidth{
+        width:50%;
+    }
+     .checkboxpadding{
+        margin-top: 20px;
+    }
+
+}
+
+
+
+
+
